@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from './response.module.css';
+import styles from './Response.module.css';
 import axios from "axios";
 
 const Response = ({ greeting }) => {
@@ -12,11 +12,7 @@ const Response = ({ greeting }) => {
     axios
       .get(`${responseServiceUrl}${greeting}`)
       .then((res) => {
-        if (res.data) {
-          setResponse(res.data);
-        } else {
-          setResponse("Response not found");
-        }
+        setResponse(res?.data || "Response not found")
       })
       .catch(() => {
         setResponse("Response not found");
