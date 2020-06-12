@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import styles from "./App.module.css";
+import { Response } from "./response";
 
-function App() {
+const App = () => {
+  const [greeting, setGreeting] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className={styles.title}>Click on a greeting to get a proper response to it</div>
+      <div className={styles.btnContainer}>
+        <span className={styles.btnWrapper}>
+          <button onClick={() => setGreeting("hello")} className={styles.greetBtn}>
+            Hello
+          </button>
+          <button onClick={() => setGreeting("goodbye")} className={styles.greetBtn}>
+            Goodbye
+          </button>
+          <button onClick={() => setGreeting("salutations")} className={styles.greetBtn}>
+            Salutations
+          </button>
+        </span>
+      </div>
+      <div className={styles.title}>Response to the greeting:</div>
+      <Response greeting={greeting}/>
+    </>
   );
-}
+};
 
 export default App;
